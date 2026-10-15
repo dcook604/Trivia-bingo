@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bingo Host Console</title>
+<style>
+  :root { --red: #e31837; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #14141f; color: #eee; }
+  #auth { max-width: 340px; margin: 20vh auto; padding: 24px; background: #22223a; border-radius: 12px; text-align: center; }
+  #auth input { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #444; background: #111; color: #eee; }
+  #console { display: none; max-width: 1100px; margin: 0 auto; padding: 16px; }
+  .cols { display: grid; grid-template-columns: 1fr 340px; gap: 16px; }
+  @media (max-width: 800px) { .cols { grid-template-columns: 1fr; } }
+  .panel { background: #22223a; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+  .panel h2 { margin: 0 0 10px; font-size: 1.1rem; color: #ffd54a; }
+  button { cursor: pointer; border: none; border-radius: 8px; font-weight: 700; padding: 10px 16px; }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-ghost { background: #33334d; color: #eee; }
+  #qlist { max-height: 420px; overflow-y: auto; }
+  .q { padding: 8px 10px; border-radius: 8px; margin-bottom: 6px; background: #2c2c46; cursor: pointer; font-size: 0.9rem; }
+  .q:hover { background: #38385a; }
+  .q.sel { outline: 2px solid var(--red); }
+  .q .rnd { color: #999; font-size: 0.75rem; }
+  #qdetail { font-size: 1rem; }
+  #qdetail .opts { margin: 10px 0; color: #bbb; }
+  #called { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { background: #ffd54a; color: #111; border-radius: 20px; padding: 4px 12px; font-size: 0.85rem; font-weight: 600; }
+  #winners li { margin-bottom: 6px; }
+  #winners .t { color: #999; font-size: 0.8rem; }
+  input[type=text] { padding: 10px; border-radius: 8px; border: 1px solid #444; background: #111; color: #eee; }
+  .row { display: flex; gap: 8px; margin-top: 10px; }
+  .row input { flex: 1; }
+  #pstat { font-size: 1.6rem; font-weight: 800; }
+</style>
+</head>
+<body>
+<div id="auth">
+  <h2>Host sign in</h2>
+  <input type="password" id="keyInput" placeholder="Host key">
+  <button class="btn-red" id="authBtn" style="width:100%">Open console</button>
+  <p id="authErr" style="color:#ff8080"></p>
+</div>
+
+<div id="console">
+  <h1 style="margin:4px 0 12px">Bingo Host Console</h1>
+  <div class="cols">
+    <div>
+      <div class="panel">
+        <h2>Questions</h2>
+        <div id="qlist"></div>
+      </div>
+      <div class="panel" id="qpanel" style="display:none">
+        <h2 id="qround"></h2>
+        <div id="qdetail"></div>
+        <div class="row">
+          <button class="btn-red" id="revealBtn">Reveal answer &amp; call it</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Called words (<span id="ccount">0</span>)</h2>
+        <div id="called"></div>
+        <div class="row">
+          <input type="text" id="customWord" placeholder="Call a custom word...">
+          <button class="btn-ghost" id="callCustomBtn">Call it</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="panel"><h2>Players</h2><div id="pstat">0</div></div>
+      <div class="panel"><h2>Winners</h2><ol id="winners"></ol></div>
+      <div class="panel">
+        <h2>Game</h2>
+        <button class="btn-ghost" id="resetBtn">Reset game</button>
+        <p style="color:#999;font-size:0.8rem">Reset clears all cards, called words and winners. Players rejoin fresh.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host);
+let questions = [], selected = null;
+const key = sessionStorage.getItem('bingo_host_key');
+if (key) auth(key);
+
+ws.onopen = () => { const k = sessionStorage.getItem('bingo_host_key'); if (k) ws.send(JSON.stringify({ type: 'host_auth', key: k })); };
+ws.onmessage = ev => {
+  const m = JSON.parse(ev.data);
+  if (m.type === 'host_denied') { document.getElementById('authErr').textContent = 'Wrong host key.'; sessionStorage.removeItem('bingo_host_key'); }
+  else if (m.type === 'host_state') render(m);
+};
+function auth(k) { sessionStorage.setItem('bingo_host_key', k); if (ws.readyState === 1) ws.send(JSON.stringify({ type: 'host_auth', key: k })); }
+document.getElementById('authBtn').onclick = () => auth(document.getElementById('keyInput').value);
+
+function render(m) {
+  document.getElementById('auth').style.display = 'none';
+  document.getElementById('console').style.display = 'block';
+  questions = m.questions || [];
+  const ql = document.getElementById('qlist');
+  if (!ql.children.length) {
+    questions.forEach((q, i) => {
+      const d = document.createElement('div');
+      d.className = 'q'; d.dataset.i = i;
+      d.innerHTML = '<span class="rnd">' + q.round + ' #' + q.num + '</span><br>' + q.question.slice(0, 90) + (q.question.length > 90 ? '...' : '');
+      d.onclick = () => selectQ(i);
+      ql.appendChild(d);
+    });
+  }
+  document.getElementById('pstat').textContent = m.players.length;
+  const cw = document.getElementById('called'); cw.innerHTML = '';
+  m.called.forEach(w => { const s = document.createElement('span'); s.className = 'chip'; s.textContent = w; cw.appendChild(s); });
+  document.getElementById('ccount').textContent = m.called.length;
+  const wl = document.getElementById('winners'); wl.innerHTML = '';
+  m.winners.forEach(w => {
+    const li = document.createElement('li');
+    li.innerHTML = '<b>' + esc(w.name) + '</b> — ' + esc(w.line) + ' <span class="t">' + new Date(w.at).toLocaleTimeString() + '</span>';
+    wl.appendChild(li);
+  });
+  if (!m.winners.length) wl.innerHTML = '<li style="color:#999">No winners yet.</li>';
+}
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+function selectQ(i) {
+  selected = i;
+  document.querySelectorAll('.q').forEach(e => e.classList.toggle('sel', +e.dataset.i === i));
+  const q = questions[i];
+  document.getElementById('qpanel').style.display = 'block';
+  document.getElementById('qround').textContent = q.round + ' — Question ' + q.num;
+  document.getElementById('qdetail').innerHTML =
+    '<p><b>' + esc(q.question) + '</b></p><div class="opts">' +
+    q.options.map(o => esc(o)).join('<br>') + '</div>' +
+    '<p style="color:#ffd54a">Answer: <b>' + esc(q.answer) + '</b></p>' +
+    (q.explanation ? '<p style="color:#999;font-size:0.9rem">' + esc(q.explanation) + '</p>' : '');
+}
+document.getElementById('revealBtn').onclick = () => {
+  if (selected == null) return;
+  ws.send(JSON.stringify({ type: 'call_word', word: questions[selected].answer }));
+};
+document.getElementById('callCustomBtn').onclick = () => {
+  const w = document.getElementById('customWord').value.trim();
+  if (!w) return;
+  ws.send(JSON.stringify({ type: 'call_word', word: w }));
+  document.getElementById('customWord').value = '';
+};
+document.getElementById('resetBtn').onclick = () => {
+  if (confirm('Reset the whole game? All cards and winners will be cleared.')) ws.send(JSON.stringify({ type: 'reset' }));
+};
+</script>
+</body>
+</html>

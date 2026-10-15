@@ -1,0 +1,726 @@
+{
+ "terms": [
+  {
+   "term": "Generative AI",
+   "category": "AI",
+   "display": "Generative AI"
+  },
+  {
+   "term": "Machine Learning",
+   "category": "AI",
+   "display": "Machine Learning"
+  },
+  {
+   "term": "Prompt",
+   "category": "AI",
+   "display": "Prompt"
+  },
+  {
+   "term": "Hallucination",
+   "category": "AI",
+   "display": "Hallucination"
+  },
+  {
+   "term": "Copilot",
+   "category": "AI",
+   "display": "Copilot"
+  },
+  {
+   "term": "Deepfake",
+   "category": "AI / Fraud",
+   "display": "Deepfake"
+  },
+  {
+   "term": "Anomaly Detection",
+   "category": "Fraud analytics",
+   "display": "Anomaly Detection"
+  },
+  {
+   "term": "False Positive",
+   "category": "Fraud analytics",
+   "display": "False Positive"
+  },
+  {
+   "term": "Synthetic Identity",
+   "category": "Fraud",
+   "display": "Synthetic Identity"
+  },
+  {
+   "term": "Account Takeover",
+   "category": "Fraud",
+   "display": "Account Takeover"
+  },
+  {
+   "term": "Social Engineering",
+   "category": "Fraud",
+   "display": "Social Engineering"
+  },
+  {
+   "term": "Multi-Factor Authentication",
+   "category": "Security",
+   "display": "Multi-Factor Authentication"
+  },
+  {
+   "term": "Transaction Monitoring",
+   "category": "Fraud analytics",
+   "display": "Transaction Monitoring"
+  },
+  {
+   "term": "Data Privacy",
+   "category": "Governance",
+   "display": "Data Privacy"
+  },
+  {
+   "term": "Model Bias",
+   "category": "AI governance",
+   "display": "Model Bias"
+  },
+  {
+   "term": "Human Review",
+   "category": "Governance",
+   "display": "Human Review"
+  },
+  {
+   "term": "Password Manager",
+   "category": "Security",
+   "display": "Password Manager"
+  },
+  {
+   "term": "Phishing",
+   "category": "Fraud / Security",
+   "display": "Phishing"
+  },
+  {
+   "term": "Urgent Email",
+   "category": "Workplace / Security",
+   "display": "Urgent Email"
+  },
+  {
+   "term": "Meeting That Could Be an Email",
+   "category": "Workplace humour",
+   "display": "Meeting That Could Be an Email"
+  },
+  {
+   "term": "Circle Back",
+   "category": "Workplace humour",
+   "display": "Circle Back"
+  },
+  {
+   "term": "Synergy",
+   "category": "Workplace humour",
+   "display": "Synergy"
+  },
+  {
+   "term": "Action Item",
+   "category": "Workplace",
+   "display": "Action Item"
+  },
+  {
+   "term": "Spreadsheet",
+   "category": "Workplace",
+   "display": "Spreadsheet"
+  }
+ ],
+ "questions": [
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "What does generative AI do?",
+   "options": [
+    "A. Creates new content",
+    "B. Only stores files",
+    "C. Replaces every human decision"
+   ],
+   "answer": "Generative AI",
+   "explanation": "It can generate text, images, code, and other content."
+  },
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "What is machine learning?",
+   "options": [
+    "A. Teaching a computer through examples and data",
+    "B. A laptop repair service",
+    "C. A new meeting format"
+   ],
+   "answer": "Machine Learning",
+   "explanation": "Machine learning systems identify patterns from data."
+  },
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "What do we call the instruction given to an AI system?",
+   "options": [
+    "A. Prompt",
+    "B. Action item",
+    "C. False positive"
+   ],
+   "answer": "Prompt",
+   "explanation": "A prompt tells the system what you want it to do."
+  },
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "An AI confidently invents a source or fact. What is this commonly called?",
+   "options": [
+    "A. Hallucination",
+    "B. Account takeover",
+    "C. Transaction monitoring"
+   ],
+   "answer": "Hallucination",
+   "explanation": "AI can generate plausible-sounding but incorrect information."
+  },
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "What is an AI copilot generally designed to do?",
+   "options": [
+    "A. Assist a person with tasks",
+    "B. Approve every transaction automatically",
+    "C. Replace all governance"
+   ],
+   "answer": "Copilot",
+   "explanation": "AI assistants support work, while people remain responsible for decisions."
+  },
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "What is a deepfake?",
+   "options": [
+    "A. Synthetic or manipulated media that imitates a real person",
+    "B. A secure password",
+    "C. A transaction report"
+   ],
+   "answer": "Deepfake",
+   "explanation": "Deepfakes can imitate faces, voices, or video."
+  },
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "An AI model consistently produces unfair results for a particular group. What concern does this raise?",
+   "options": [
+    "A. Model bias",
+    "B. Circle back",
+    "C. Password manager"
+   ],
+   "answer": "Model Bias",
+   "explanation": "Biased data or model design can produce unfair outcomes."
+  },
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "What principle means personal information should be handled appropriately and protected?",
+   "options": [
+    "A. Data privacy",
+    "B. Synergy",
+    "C. Hallucination"
+   ],
+   "answer": "Data Privacy",
+   "explanation": "Data privacy concerns how personal information is collected, used, and protected."
+  },
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "Why should a person check an AI-generated answer before relying on it for an important decision?",
+   "options": [
+    "A. Human review",
+    "B. More meetings",
+    "C. Bigger spreadsheets"
+   ],
+   "answer": "Human Review",
+   "explanation": "Human review can catch errors and assess context."
+  },
+  {
+   "round": "Round 1: AI or Not AI?",
+   "num": "",
+   "question": "A system notices a transaction pattern that differs from the usual behaviour. What might it have detected?",
+   "options": [
+    "A. Anomaly detection",
+    "B. A prompt",
+    "C. An action item"
+   ],
+   "answer": "Anomaly Detection",
+   "explanation": "Anomaly detection identifies patterns that differ from expected behaviour."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "A message pretends to be from a trusted organization and tries to trick you into revealing credentials. What is this?",
+   "options": [
+    "A. Phishing",
+    "B. Model bias",
+    "C. A prompt"
+   ],
+   "answer": "Phishing",
+   "explanation": "Phishing uses deceptive messages to steal information or prompt unsafe actions."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "A fraudster manipulates someone into sharing confidential information. What broad technique is being used?",
+   "options": [
+    "A. Social engineering",
+    "B. Anomaly detection",
+    "C. Machine learning"
+   ],
+   "answer": "Social Engineering",
+   "explanation": "Social engineering exploits human trust, emotions, or habits."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "Someone gains unauthorized access to a customer's account. What type of fraud may this be?",
+   "options": [
+    "A. Account takeover",
+    "B. A hallucination",
+    "C. A meeting that could be an email"
+   ],
+   "answer": "Account Takeover",
+   "explanation": "Account takeover involves unauthorized control of an account."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "A fraudster combines real and fabricated personal details to create a new identity. What is this called?",
+   "options": [
+    "A. Synthetic identity",
+    "B. Data privacy",
+    "C. Copilot"
+   ],
+   "answer": "Synthetic Identity",
+   "explanation": "Synthetic identities combine genuine and invented information."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "Which extra security step can help protect an account even if a password is stolen?",
+   "options": [
+    "A. Multi-factor authentication",
+    "B. Circle back",
+    "C. An urgent email"
+   ],
+   "answer": "Multi-Factor Authentication",
+   "explanation": "MFA requires an additional verification factor."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "Where is a sensible place to store and generate unique passwords?",
+   "options": [
+    "A. Password manager",
+    "B. A shared spreadsheet",
+    "C. A meeting chat"
+   ],
+   "answer": "Password Manager",
+   "explanation": "A reputable password manager can help create and securely store unique passwords."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "What process looks for suspicious patterns across financial transactions?",
+   "options": [
+    "A. Transaction monitoring",
+    "B. Prompt engineering",
+    "C. Synergy"
+   ],
+   "answer": "Transaction Monitoring",
+   "explanation": "Monitoring systems flag transactions that may require further review."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "A legitimate transaction is incorrectly flagged as suspicious. What is this called?",
+   "options": [
+    "A. False positive",
+    "B. Deepfake",
+    "C. Synthetic identity"
+   ],
+   "answer": "False Positive",
+   "explanation": "A false positive is an alert that incorrectly identifies legitimate activity as suspicious."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "An email demands immediate action and threatens account closure unless you click a link. What should you be wary of?",
+   "options": [
+    "A. Urgent email",
+    "B. Human review",
+    "C. Machine learning"
+   ],
+   "answer": "Urgent Email",
+   "explanation": "Urgency and threats are common social-engineering tactics. Verify requests using trusted channels."
+  },
+  {
+   "round": "Round 2: Catch the Fraud",
+   "num": "",
+   "question": "An automated fraud alert appears. What should happen before a complex or consequential decision is made?",
+   "options": [
+    "A. Human review",
+    "B. Immediate approval",
+    "C. Ignore every alert"
+   ],
+   "answer": "Human Review",
+   "explanation": "Review helps assess context and determine whether an alert is meaningful."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "A video appears to show an executive asking for an unusual payment. What technology could have been used to fabricate it?",
+   "options": [
+    "A. Deepfake",
+    "B. Password manager",
+    "C. Transaction monitoring"
+   ],
+   "answer": "Deepfake",
+   "explanation": "Synthetic video or audio can imitate a real person's appearance or voice."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "Which type of AI can draft a realistic email that imitates a supplier's writing style?",
+   "options": [
+    "A. Generative AI",
+    "B. A spreadsheet",
+    "C. Multi-factor authentication"
+   ],
+   "answer": "Generative AI",
+   "explanation": "Generative AI can produce convincing text that may be misused in scams."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "A fabricated identity uses a mixture of real and invented personal details. What is the term?",
+   "options": [
+    "A. Synthetic identity",
+    "B. Prompt",
+    "C. Circle back"
+   ],
+   "answer": "Synthetic Identity",
+   "explanation": "This is a common identity-fraud technique."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "A scammer pretends to be a senior leader and pressures an employee to bypass normal procedures. What is the main technique?",
+   "options": [
+    "A. Social engineering",
+    "B. Anomaly detection",
+    "C. Data privacy"
+   ],
+   "answer": "Social Engineering",
+   "explanation": "The scam relies on authority and pressure rather than a technical exploit alone."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "An AI system is trained using personal information. Which issue must be considered?",
+   "options": [
+    "A. Data privacy",
+    "B. Synergy",
+    "C. Action item"
+   ],
+   "answer": "Data Privacy",
+   "explanation": "Personal information must be handled under applicable privacy requirements and organizational policies."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "Why might a fraud model perform worse for one group than another?",
+   "options": [
+    "A. Model bias",
+    "B. Password manager",
+    "C. Urgent email"
+   ],
+   "answer": "Model Bias",
+   "explanation": "Data quality and design choices can lead to unequal performance."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "An AI system identifies activity that differs sharply from an account's usual pattern. What is this capability called?",
+   "options": [
+    "A. Anomaly detection",
+    "B. Hallucination",
+    "C. Meeting that could be an email"
+   ],
+   "answer": "Anomaly Detection",
+   "explanation": "An unusual pattern is a signal for investigation, not proof of fraud."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "A fraud alert is based on incomplete information. Who or what should help assess the context?",
+   "options": [
+    "A. Human review",
+    "B. Automatic approval",
+    "C. More urgency"
+   ],
+   "answer": "Human Review",
+   "explanation": "A human can weigh context and other evidence before taking appropriate action."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "A criminal uses stolen credentials to control an existing account. What type of attack is this?",
+   "options": [
+    "A. Account takeover",
+    "B. Model bias",
+    "C. Generative AI"
+   ],
+   "answer": "Account Takeover",
+   "explanation": "The criminal gains unauthorized access to an existing account."
+  },
+  {
+   "round": "Round 3: Human or Machine?",
+   "num": "",
+   "question": "A message impersonates a bank and directs the recipient to a fake login page. What is this?",
+   "options": [
+    "A. Phishing",
+    "B. Copilot",
+    "C. An action item"
+   ],
+   "answer": "Phishing",
+   "explanation": "The message attempts to steal credentials through deception."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "Which phrase is the classic response when someone wants to postpone a decision until later?",
+   "options": [
+    "A. Circle back",
+    "B. Deepfake",
+    "C. Transaction monitoring"
+   ],
+   "answer": "Circle Back",
+   "explanation": "A timeless way to schedule the same discussion again."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "A meeting has 18 people, three slide decks, and no decision. What would many employees call it?",
+   "options": [
+    "A. Meeting that could be an email",
+    "B. Account takeover",
+    "C. Multi-factor authentication"
+   ],
+   "answer": "Meeting That Could Be an Email",
+   "explanation": "Corporate humour, unfortunately familiar to many."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "Which word often appears in a slide when nobody wants to explain exactly how people will work together?",
+   "options": [
+    "A. Synergy",
+    "B. Phishing",
+    "C. Model bias"
+   ],
+   "answer": "Synergy",
+   "explanation": "It is often used to describe the benefits of collaboration."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "What do we call a task assigned at the end of a meeting?",
+   "options": [
+    "A. Action item",
+    "B. Deepfake",
+    "C. False positive"
+   ],
+   "answer": "Action Item",
+   "explanation": "An action item records work to be completed, ideally with an owner and due date."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "Where might someone track 47 dependencies, five owners, and a colour-coded status nobody updates?",
+   "options": [
+    "A. Spreadsheet",
+    "B. Deepfake",
+    "C. Password manager"
+   ],
+   "answer": "Spreadsheet",
+   "explanation": "A familiar office tool for managing work, sometimes with questionable enthusiasm."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "What is an AI assistant intended to help a worker do?",
+   "options": [
+    "A. Copilot",
+    "B. Synthetic identity",
+    "C. Urgent email"
+   ],
+   "answer": "Copilot",
+   "explanation": "An AI copilot assists with tasks such as drafting, summarizing, or finding information."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "What is the instruction you give a generative AI tool called?",
+   "options": [
+    "A. Prompt",
+    "B. False positive",
+    "C. Action item"
+   ],
+   "answer": "Prompt",
+   "explanation": "A clear prompt helps define the task and desired output."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "An email says your account will be disabled in ten minutes unless you click a link. What should raise suspicion?",
+   "options": [
+    "A. Urgent email",
+    "B. Machine learning",
+    "C. Synergy"
+   ],
+   "answer": "Urgent Email",
+   "explanation": "Pressure and threats are common features of phishing attempts."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "What tool helps people avoid reusing the same password across work and personal accounts?",
+   "options": [
+    "A. Password manager",
+    "B. Spreadsheet shared with everyone",
+    "C. Circle back"
+   ],
+   "answer": "Password Manager",
+   "explanation": "Unique passwords reduce the risk that one compromised credential affects multiple accounts."
+  },
+  {
+   "round": "Round 4: Fraud Fighter or Meeting Survivor?",
+   "num": "",
+   "question": "What security measure asks for a second form of verification beyond a password?",
+   "options": [
+    "A. Multi-factor authentication",
+    "B. Generative AI",
+    "C. Meeting that could be an email"
+   ],
+   "answer": "Multi-Factor Authentication",
+   "explanation": "MFA adds another verification factor to help protect an account."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "Which process examines transactions for patterns that may indicate suspicious activity?",
+   "options": [
+    "A. Transaction monitoring",
+    "B. Synergy",
+    "C. Prompt"
+   ],
+   "answer": "Transaction Monitoring",
+   "explanation": "It helps identify activity that may need investigation."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "A transaction pattern differs from a customer's usual activity. What technique may flag this?",
+   "options": [
+    "A. Anomaly detection",
+    "B. Circle back",
+    "C. Copilot"
+   ],
+   "answer": "Anomaly Detection",
+   "explanation": "An unusual pattern can be a useful signal, but it does not prove fraud."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "A legitimate customer is incorrectly flagged by a fraud system. What is this?",
+   "options": [
+    "A. False positive",
+    "B. Deepfake",
+    "C. Social engineering"
+   ],
+   "answer": "False Positive",
+   "explanation": "False positives are important to measure because they can create unnecessary friction."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "A model improves its ability to recognize patterns by learning from examples. What broad technology is involved?",
+   "options": [
+    "A. Machine learning",
+    "B. An urgent email",
+    "C. A meeting that could be an email"
+   ],
+   "answer": "Machine Learning",
+   "explanation": "Machine learning algorithms learn patterns from data."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "What should an organization consider when using customer information to build or evaluate AI systems?",
+   "options": [
+    "A. Data privacy",
+    "B. Synergy",
+    "C. Circle back"
+   ],
+   "answer": "Data Privacy",
+   "explanation": "Privacy, permitted use, and appropriate safeguards matter when handling personal data."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "What risk can arise when the data used to train a fraud model does not represent the population fairly?",
+   "options": [
+    "A. Model bias",
+    "B. Password manager",
+    "C. Action item"
+   ],
+   "answer": "Model Bias",
+   "explanation": "Unrepresentative or historically biased data can lead to unfair outcomes."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "A fraudster exploits trust and impersonates an authority figure to pressure an employee. What is this?",
+   "options": [
+    "A. Social engineering",
+    "B. Transaction monitoring",
+    "C. Data privacy"
+   ],
+   "answer": "Social Engineering",
+   "explanation": "The attacker manipulates a person into taking an unsafe action."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "A fake message tries to persuade a recipient to disclose their login credentials. What is it?",
+   "options": [
+    "A. Phishing",
+    "B. Human review",
+    "C. Machine learning"
+   ],
+   "answer": "Phishing",
+   "explanation": "Phishing uses deceptive communications to steal information or gain access."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "Which technology can draft realistic text that may also be misused to create convincing scam messages?",
+   "options": [
+    "A. Generative AI",
+    "B. Multi-factor authentication",
+    "C. Password manager"
+   ],
+   "answer": "Generative AI",
+   "explanation": "Generative AI can create content that criminals may use for impersonation or deception."
+  },
+  {
+   "round": "Round 5: Financial Crime Finale",
+   "num": "",
+   "question": "A team agrees to review an alert, document the rationale, and report back by Friday. What is the assigned task called?",
+   "options": [
+    "A. Action item",
+    "B. Deepfake",
+    "C. Synthetic identity"
+   ],
+   "answer": "Action Item",
+   "explanation": "A well-defined action item should have an owner and a due date."
+  }
+ ]
+}

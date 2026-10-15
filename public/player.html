@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trivia Bingo</title>
+<style>
+  :root { --red: #e31837; --dark: #1a1a2e; --card: #ffffff; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--dark); color: #eee; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+  header { width: 100%; max-width: 560px; padding: 16px; text-align: center; }
+  header h1 { margin: 0 0 4px; font-size: 1.5rem; }
+  header h1 span { color: var(--red); }
+  #join { margin-top: 20vh; width: 100%; max-width: 340px; padding: 24px; background: #22223a; border-radius: 12px; text-align: center; }
+  #join input { width: 100%; padding: 12px; font-size: 1.1rem; border-radius: 8px; border: 1px solid #444; background: #111; color: #eee; margin-bottom: 12px; }
+  button { cursor: pointer; border: none; border-radius: 8px; font-weight: 700; }
+  #joinBtn { width: 100%; padding: 12px; font-size: 1.1rem; background: var(--red); color: #fff; }
+  #game { display: none; width: 100%; max-width: 560px; padding: 12px; }
+  #grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 12px 0; }
+  .cell { background: var(--card); color: #111; border-radius: 8px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.72rem; font-weight: 600; padding: 4px; line-height: 1.15; }
+  .cell.called { background: #ffd54a; }
+  .cell.free { background: var(--red); color: #fff; }
+  #bingoBtn { width: 100%; padding: 16px; font-size: 1.4rem; background: var(--red); color: #fff; letter-spacing: 2px; }
+  #bingoBtn:disabled { background: #555; }
+  #status { text-align: center; min-height: 1.6em; margin: 8px 0; font-size: 0.95rem; color: #ffd54a; }
+  #count { text-align: center; color: #999; font-size: 0.85rem; }
+  #win { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; z-index: 10; }
+  #win .box { background: #22223a; padding: 40px; border-radius: 16px; text-align: center; border: 3px solid var(--red); }
+  #win h2 { color: var(--red); font-size: 2.5rem; margin: 0 0 8px; }
+</style>
+</head>
+<body>
+<header><h1>TRIVIA <span>BINGO</span></h1><div id="pname"></div></header>
+
+<div id="join">
+  <h2 style="margin-top:0">Join the game</h2>
+  <input id="nameInput" maxlength="40" placeholder="Your name" autocomplete="off">
+  <button id="joinBtn">Get my card</button>
+</div>
+
+<div id="game">
+  <div id="count"></div>
+  <div id="grid"></div>
+  <div id="status"></div>
+  <button id="bingoBtn">BINGO!</button>
+</div>
+
+<div id="win"><div class="box"><h2>BINGO!</h2><p id="winLine"></p><p>You're on the winners board.</p></div></div>
+
+<script>
+const ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host);
+let token = localStorage.getItem('bingo_token') || null;
+let myCard = [];
+let myName = '';
+
+ws.onopen = () => { if (token) ws.send(JSON.stringify({ type: 'rejoin', token })); };
+ws.onmessage = ev => {
+  const m = JSON.parse(ev.data);
+  if (m.type === 'card') {
+    token = m.token; localStorage.setItem('bingo_token', token);
+    myCard = m.card; myName = m.name;
+    showGame(m);
+  } else if (m.type === 'rejoin_failed') {
+    token = null; localStorage.removeItem('bingo_token');
+  } else if (m.type === 'called') {
+    markCalled(m.word); updateCount(m.called.length);
+  } else if (m.type === 'reset') {
+    token = null; localStorage.removeItem('bingo_token');
+    location.reload();
+  } else if (m.type === 'bingo_result') {
+    const b = document.getElementById('bingoBtn');
+    b.disabled = false; b.textContent = 'BINGO!';
+    if (m.ok) {
+      document.getElementById('winLine').textContent = m.already ? 'Already recorded.' : ('Winning line: ' + m.line);
+      document.getElementById('win').style.display = 'flex';
+    } else {
+      setStatus(m.reason || 'No bingo yet. Keep playing!');
+    }
+  }
+};
+
+function showGame(m) {
+  document.getElementById('join').style.display = 'none';
+  document.getElementById('game').style.display = 'block';
+  document.getElementById('pname').textContent = 'Playing as ' + m.name;
+  const g = document.getElementById('grid'); g.innerHTML = '';
+  m.card.forEach((word, i) => {
+    const d = document.createElement('div');
+    d.className = 'cell' + (word === 'FREE' ? ' free' : '');
+    d.textContent = word === 'FREE' ? 'FREE' : word;
+    d.dataset.word = word;
+    if (m.called.includes(word)) d.classList.add('called');
+    g.appendChild(d);
+  });
+  updateCount(m.called.length);
+}
+function markCalled(word) {
+  document.querySelectorAll('.cell').forEach(c => {
+    if (c.dataset.word === word) c.classList.add('called');
+  });
+}
+function updateCount(n) { document.getElementById('count').textContent = n + ' words called'; }
+function setStatus(t) { document.getElementById('status').textContent = t; }
+
+document.getElementById('joinBtn').onclick = () => {
+  const name = document.getElementById('nameInput').value.trim();
+  if (!name) { alert('Enter your name first.'); return; }
+  ws.send(JSON.stringify({ type: 'join', name }));
+};
+document.getElementById('nameInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('joinBtn').click();
+});
+document.getElementById('bingoBtn').onclick = () => {
+  const b = document.getElementById('bingoBtn');
+  b.disabled = true; b.textContent = 'Checking...';
+  ws.send(JSON.stringify({ type: 'bingo', token }));
+};
+</script>
+</body>
+</html>

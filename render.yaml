@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: trivia-bingo
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: HOST_KEY
+        sync: false

@@ -1,0 +1,1 @@
+{"dependencies":{"express":"^4.19.2","ws":"^8.18.0"},"description":"Self-hosted trivia bingo for Teams: host console, player cards, automatic bingo verification","main":"server.js","name":"trivia-bingo","scripts":{"start":"node server.js"},"version":"1.0.0"}
